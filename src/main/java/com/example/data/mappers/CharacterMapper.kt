@@ -1,11 +1,12 @@
 package com.example.data.mappers
 
-import com.example.data.models.CharacterDto
+import com.example.network.dto.CharacterDto
 import com.example.domain.mappers.Mapper
 import com.example.domain.modules.CharacterGender
 import com.example.domain.modules.CharacterStatus
+import javax.inject.Inject
 
-class CharacterMapper: Mapper<CharacterDto, com.example.domain.modules.Character> {
+class CharacterMapper @Inject constructor() : Mapper<CharacterDto, com.example.domain.modules.Character> {
     override fun dtoToEntity(input: CharacterDto): com.example.domain.modules.Character {
         return com.example.domain.modules.Character(
             id = input.id,
