@@ -7,7 +7,7 @@ import com.example.network.KtorClient
 import javax.inject.Inject
 
 
-class CharacterRepositoryImpl @Inject constructor(
+class CharacterRepositoryImpl @Inject internal constructor(
     private val characterMapper : CharacterMapper,
     private val ktorClient: KtorClient
 ) : CharacterRepository {
