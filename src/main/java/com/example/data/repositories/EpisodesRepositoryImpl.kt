@@ -14,4 +14,9 @@ class EpisodesRepositoryImpl @Inject constructor(
         val episodes = ktorClient.getEpisodes(episodeIds)
        return episodes?.map { mapper.dtoToEntity(it) } ?: emptyList()
     }
+
+    override suspend fun getEpisode(episodeId: String): Episode {
+        val episode = ktorClient.getEpisode(episodeId)
+        return mapper.dtoToEntity(episode!!)
+    }
 }
