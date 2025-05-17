@@ -1,15 +1,18 @@
 package com.example.data.repositories
 
 import com.example.data.mappers.CharacterMapper
+import com.example.data.mappers.CharactersPageMapper
 import com.example.domain.interfaces.CharacterRepository
 import com.example.domain.modules.Character
+import com.example.domain.modules.CharactersPage
 import com.example.network.KtorClient
 import javax.inject.Inject
 
 
 class CharacterRepositoryImpl @Inject internal constructor(
     private val characterMapper : CharacterMapper,
-    private val ktorClient: KtorClient
+    private val ktorClient: KtorClient,
+    private val charactersPageMapper: CharactersPageMapper
 ) : CharacterRepository {
     override suspend fun getCharacter(id: Int): Character? {
         var character : Character? = null
@@ -17,5 +20,11 @@ class CharacterRepositoryImpl @Inject internal constructor(
             character = characterMapper.dtoToEntity(it)
         }
         return character
+    }
+
+    override suspend fun getCharacters(pageNumber: Int): CharactersPage? {
+        return ktorClient.getCharactersPage(pageNumber)?.let {
+            charactersPageMapper.dtoToEntity(it)
+        }
     }
 }

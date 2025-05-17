@@ -3,10 +3,17 @@ package com.example.data.mappers
 import com.example.domain.mappers.Mapper
 import com.example.domain.modules.CharactersPage
 import com.example.network.dto.CharacterPageDto
+import javax.inject.Inject
 
-class CharactersPageMapper : Mapper<CharacterPageDto, CharactersPage> {
+class CharactersPageMapper @Inject constructor(
+    private val characterMapper: CharacterMapper,
+    private val infoMapper: InfoMapper
+) : Mapper<CharacterPageDto, CharactersPage> {
     override fun dtoToEntity(input: CharacterPageDto): CharactersPage {
-
+            return CharactersPage(
+                info = infoMapper.dtoToEntity(input.info),
+                results = input.results.map { characterMapper.dtoToEntity(it) }
+            )
     }
 
     override fun entityToDto(input: CharactersPage): CharacterPageDto {
