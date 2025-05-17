@@ -3,8 +3,9 @@ package com.example.data.mappers
 import com.example.domain.mappers.Mapper
 import com.example.domain.modules.Info
 import com.example.network.dto.InfoDto
+import javax.inject.Inject
 
-class InfoMapper : Mapper<InfoDto, Info> {
+class InfoMapper @Inject constructor() : Mapper<InfoDto, Info> {
     override fun dtoToEntity(input: InfoDto): Info {
         return Info(
             count = input.count,
