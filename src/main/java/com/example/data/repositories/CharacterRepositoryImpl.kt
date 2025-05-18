@@ -22,7 +22,7 @@ class CharacterRepositoryImpl @Inject internal constructor(
         return character
     }
 
-    override suspend fun getCharacters(pageNumber: Int): CharactersPage? {
+    override suspend fun getCharactersPaging(pageNumber: Int): CharactersPage? {
         return ktorClient.getCharactersPage(pageNumber)?.let {
             charactersPageMapper.dtoToEntity(it)
         }
