@@ -1,6 +1,6 @@
 package com.example.data.repositories
 
-import com.example.data.mappers.EpisodeMapper
+import com.example.data.mappers.domainMapper.EpisodeMapper
 import com.example.domain.interfaces.EpisodesRepository
 import com.example.domain.modules.Episode
 import com.example.network.KtorClient

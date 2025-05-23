@@ -1,25 +1,26 @@
-package com.example.data.mappers
+package com.example.data.mappers.domainMapper
 
 import com.example.network.dto.CharacterDto
 import com.example.domain.mappers.Mapper
+import com.example.domain.modules.Character
 import com.example.domain.modules.CharacterGender
 import com.example.domain.modules.CharacterStatus
 import javax.inject.Inject
 
-class CharacterMapper @Inject constructor() : Mapper<CharacterDto, com.example.domain.modules.Character> {
-    override fun dtoToEntity(input: CharacterDto): com.example.domain.modules.Character {
-        return com.example.domain.modules.Character(
+class CharacterMapper @Inject constructor() : Mapper<CharacterDto, Character> {
+    override fun dtoToEntity(input: CharacterDto): Character {
+        return Character(
             id = input.id,
             name = input.name,
             status = input.toDomainStatus(input.status),
             species = input.species,
             type = input.type,
             gender = input.toDomainGender(input.gender),
-            origin = com.example.domain.modules.Character.Origin(
+            origin = Character.Origin(
                 name = input.origin.name,
                 url = input.origin.url
             ),
-            location = com.example.domain.modules.Character.Location(
+            location = Character.Location(
                 name = input.location.name,
                 url = input.location.url
             ),
@@ -30,7 +31,7 @@ class CharacterMapper @Inject constructor() : Mapper<CharacterDto, com.example.d
         )
     }
 
-    override fun entityToDto(input: com.example.domain.modules.Character): CharacterDto {
+    override fun entityToDto(input: Character): CharacterDto {
         return CharacterDto(
             id = input.id,
             name = input.name,
@@ -53,11 +54,11 @@ class CharacterMapper @Inject constructor() : Mapper<CharacterDto, com.example.d
         )
     }
 
-    override fun dtoListToEntityList(input: List<CharacterDto>): List<com.example.domain.modules.Character> {
+    override fun dtoListToEntityList(input: List<CharacterDto>): List<Character> {
         return input.map{dtoToEntity(it) }
     }
 
-    override fun entityListToDtoList(input: List<com.example.domain.modules.Character>): List<CharacterDto> {
+    override fun entityListToDtoList(input: List<Character>): List<CharacterDto> {
        return input.map { entityToDto(it) }
     }
 

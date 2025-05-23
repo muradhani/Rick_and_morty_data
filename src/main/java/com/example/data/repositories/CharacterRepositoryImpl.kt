@@ -1,7 +1,7 @@
 package com.example.data.repositories
 
-import com.example.data.mappers.CharacterMapper
-import com.example.data.mappers.CharactersPageMapper
+import com.example.data.mappers.domainMapper.CharacterMapper
+import com.example.data.mappers.domainMapper.CharactersPageMapper
 import com.example.domain.interfaces.CharacterRepository
 import com.example.domain.modules.Character
 import com.example.domain.modules.CharactersPage

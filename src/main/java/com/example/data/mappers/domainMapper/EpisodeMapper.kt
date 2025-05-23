@@ -1,4 +1,4 @@
-package com.example.data.mappers
+package com.example.data.mappers.domainMapper
 
 import com.example.domain.mappers.Mapper
 import com.example.domain.modules.Episode
