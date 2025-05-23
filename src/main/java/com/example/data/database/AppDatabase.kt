@@ -9,7 +9,7 @@ import com.example.data.database.Dao.CharacterDao
 import com.example.data.database.converter.Converters
 import com.example.data.database.entities.CharacterEntity
 
-@Database(entities = [CharacterEntity::class], version = 2)
+@Database(entities = [CharacterEntity::class], version = 3)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun characterDao(): CharacterDao
