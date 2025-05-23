@@ -4,7 +4,7 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
 }
-val roomVersion = "2.6.1"
+val roomVersion = "2.7.1"
 android {
     namespace = "com.example.data"
     compileSdk = 35
@@ -54,6 +54,8 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.56.2")
     kapt("com.google.dagger:hilt-compiler:2.56.2")
     implementation ("androidx.room:room-runtime:$roomVersion")
-    kapt ("androidx.room:room-compiler:$roomVersion") // if using Kotlin
+    kapt ("androidx.room:room-compiler:$roomVersion")
     implementation ("androidx.room:room-ktx:$roomVersion")
+    implementation("com.google.code.gson:gson:2.10.1")
+
 }
