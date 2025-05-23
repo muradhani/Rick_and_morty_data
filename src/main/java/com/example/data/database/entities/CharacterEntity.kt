@@ -5,10 +5,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.network.dto.CharacterDto
 
-@Entity(tableName = "Characters")
+@Entity(tableName = "characters")
 data class CharacterEntity(
-    @PrimaryKey(autoGenerate = false) val id :Int = 0 ,
-
-    @Embedded
+    @PrimaryKey(autoGenerate = true) val id :Int = 0 ,
     val character: CharacterDto
 )
