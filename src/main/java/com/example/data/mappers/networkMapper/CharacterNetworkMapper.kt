@@ -7,7 +7,6 @@ import com.example.network.dto.CharacterDto
 class CharacterNetworkMapper : Mapper<CharacterDto, CharacterEntity> {
     override fun dtoToDao(input: CharacterDto): CharacterEntity {
         return CharacterEntity(
-            id = input.id,
             character = input
         )
     }
