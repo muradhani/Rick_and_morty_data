@@ -7,7 +7,7 @@ import com.example.network.dto.CharacterDto
 
 @Entity(tableName = "Characters")
 data class CharacterEntity(
-    @PrimaryKey(autoGenerate = true) val id :Int = 0 ,
+    @PrimaryKey(autoGenerate = false) val id :Int = 0 ,
 
     @Embedded
     val character: CharacterDto

@@ -5,8 +5,11 @@ import com.example.data.mappersInterfaces.Mapper
 import com.example.network.dto.CharacterDto
 
 class CharacterNetworkMapper : Mapper<CharacterDto, CharacterEntity> {
-    override fun dapToDao(input: CharacterDto): CharacterEntity {
-
+    override fun dtoToDao(input: CharacterDto): CharacterEntity {
+        return CharacterEntity(
+            id = input.id,
+            character = input
+        )
     }
 
     override fun daoToDto(input: CharacterEntity): CharacterDto {
@@ -14,7 +17,7 @@ class CharacterNetworkMapper : Mapper<CharacterDto, CharacterEntity> {
     }
 
     override fun dtoListToDaoList(input: List<CharacterDto>): List<CharacterEntity> {
-        TODO("Not yet implemented")
+        return input.map { dtoToDao(it) }
     }
 
     override fun daoListToDtoList(input: List<CharacterEntity>): List<CharacterDto> {
