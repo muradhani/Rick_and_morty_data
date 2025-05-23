@@ -3,7 +3,7 @@ package com.example.data.di
 import android.content.Context
 import androidx.room.Room
 import com.example.data.database.AppDatabase
-import com.example.data.database.entities.CharacterEntity
+import com.example.data.database.Dao.CharacterDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +26,7 @@ class DataBaseModule {
     }
 
     @Provides
-    fun provideCharacterDao(database: AppDatabase): CharacterEntity {
+    fun provideCharacterDao(database: AppDatabase): CharacterDao{
         return database.characterDao()
     }
 }
