@@ -4,7 +4,7 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
 }
-
+val roomVersion = "2.6.1"
 android {
     namespace = "com.example.data"
     compileSdk = 35
@@ -39,6 +39,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.androidx.room.common.jvm)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -52,4 +53,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.json.v173)
     implementation("com.google.dagger:hilt-android:2.56.2")
     kapt("com.google.dagger:hilt-compiler:2.56.2")
+    implementation ("androidx.room:room-runtime:$roomVersion")
+    kapt ("androidx.room:room-compiler:$roomVersion") // if using Kotlin
+    implementation ("androidx.room:room-ktx:$roomVersion")
 }
