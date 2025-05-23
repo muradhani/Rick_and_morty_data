@@ -14,7 +14,7 @@ class Converters {
     }
 
     @TypeConverter
-    fun fromCharacterEntity(json: String): CharacterEntity {
+    fun toCharacterEntity(json: String): CharacterEntity {
         return gson.fromJson(json, CharacterEntity::class.java)
     }
     @TypeConverter
@@ -23,7 +23,7 @@ class Converters {
     }
 
     @TypeConverter
-    fun fromCharacterDto(json: String): CharacterDto {
+    fun toCharacterDto(json: String): CharacterDto {
         return gson.fromJson(json, CharacterDto::class.java)
     }
 }
