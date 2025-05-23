@@ -22,12 +22,14 @@ class CharacterRepositoryImpl @Inject internal constructor(
 ) : CharacterRepository {
     override suspend fun getCharacter(id: Int): Character? {
         var character : Character? = null
-        characterDao.getCharacter(id).let {
+        characterDao.getCharacter(id)?.let {
             character = characterDaoMapper.dtoToEntity(it)
+        }?: run {
+            ktorClient.getCharacter(id)?.let {
+                character = characterMapper.dtoToEntity(it)
+            }
         }
-        ktorClient.getCharacter(id)?.let {
-            character = characterMapper.dtoToEntity(it)
-        }
+
         return character
     }
 
